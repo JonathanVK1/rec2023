@@ -10,16 +10,16 @@ int main(){
     int index,type;
     uint32_t header;
     float data;
-    struct v V;
+    struct v *V;
     while(!feof(f)){
         fread(&header,sizeof(uint32_t),1,f);
         fread(&data,sizeof(float),1,f);
         index=(header <<2)>>2;
         type=header >>30;
         
-        ord(index,type,data,V);
+        ord(index,type,data,*V);
 
-        imp(V);
+        imp(*V);
 
     }
     
