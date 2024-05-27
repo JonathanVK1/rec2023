@@ -6,8 +6,8 @@
 static struct v V[MAX];
 
 
-void ord(int index,int type, float data,struct v V[MAX]){
-    for(int i=0;i<=MAX;i++){
+void ord(int index,int type, float data,struct v V[MAX],int tam){
+    for(int i=0;i<=tam;i++){
         if(i==index){
             if(type==0){
                 V[i].T=data;
@@ -18,14 +18,15 @@ void ord(int index,int type, float data,struct v V[MAX]){
             if(type==2){
                 V[i].P=data;
             }
+            i=tam+1;
         }
     }
 };
 
-void imp(struct v V[MAX]){
+void imp(struct v V[MAX],int tam){
     int Pm,a=0;
     float PMRPM[2];
-    for(int i=0;i<=MAX;i++){
+    for(int i=0;i<=tam;i++){
         printf("index : %d\n",i);
         printf("Vel : %f rad/s\n",V[i].V);
         printf("Power : %f W\n",V[i].P);
@@ -43,6 +44,9 @@ void imp(struct v V[MAX]){
                 Pm=Pm*(-100);
             }
             V[i].E=Pm;
+        }
+        else{
+            V[i].E=0;
         }
         printf("Erol : %f\n",V[i].E);
         if(a==0){
